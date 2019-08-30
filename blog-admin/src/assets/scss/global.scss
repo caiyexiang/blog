@@ -1,0 +1,19 @@
+$light-color: #42b983;
+$font-color: #34495e;
+$dark-color: #2c3e50;
+$border-color: #e6e6e6;
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  color: $font-color;
+}
+#app {
+  height: 100%;
+}
+%center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
