@@ -29,7 +29,3 @@ npm run test
 ```
 npm run lint
 ```
-
-### TODO
-
-- home 跳转 article 改成 redirect

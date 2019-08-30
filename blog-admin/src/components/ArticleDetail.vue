@@ -95,7 +95,7 @@ export default {
       articleData: {
         title: '',
         content: '',
-        cover: '',
+        cover: 'https://i.loli.net/2019/08/30/uFX3zgqKf9btirT.jpg',
         scope: 0,
         category: ''
       },

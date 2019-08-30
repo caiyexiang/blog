@@ -10,7 +10,10 @@ class ArticleValidator extends LinValidator {
       new Rule('isLength', 'category设置错误', { min: 24, max: 24 }),
       new Rule('matches', 'category设置错误', /^[a-z\d]+$/)
     ]
-    this.scope = [new Rule('matches', 'scope设置错误', /^[0,1,2]$/)]
+    this.scope = [
+      new Rule('isOptional', '默认为0', 0),
+      new Rule('matches', 'scope设置错误', /^[0,1,2]$/)
+    ]
   }
   async validateCategory(vals) {
     const categoryId = vals.body.category
