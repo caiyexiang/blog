@@ -61,6 +61,15 @@ export default class Nav extends Vue {
 
 <style lang="scss" scoped>
 header {
+  ul,
+  li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  li {
+    cursor: pointer;
+  }
   width: 100%;
   border-bottom: 1px solid $border-color;
   background-color: rgba(255, 255, 255, 0.4);
