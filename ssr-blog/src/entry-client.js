@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import { createApp } from './app.js'
+import NProgress from 'nprogress'
 
 const { app, store, router } = createApp()
 
@@ -38,6 +39,7 @@ router.onReady(() => {
       return next()
     }
     // 这里如果有加载指示器 (loading indicator)，就触发
+    NProgress.start()
     Promise.all(
       activated.map(c => {
         if (c.asyncData) {
@@ -47,6 +49,7 @@ router.onReady(() => {
     )
       .then(() => {
         // 停止加载指示器(loading indicator)
+        NProgress.done()
         next()
       })
       .catch(next)

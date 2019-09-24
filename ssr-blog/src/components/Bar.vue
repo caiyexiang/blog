@@ -8,9 +8,10 @@
 
 <script>
 const fetchData = ({ store }) => {
-  store.dispatch('fetchBar')
+  return store.dispatch('fetchBar')
 }
 export default {
+  name: 'Bar',
   asyncData: fetchData,
   title () {
     return 'bar'

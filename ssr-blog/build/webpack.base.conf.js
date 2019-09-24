@@ -53,6 +53,7 @@ const baseConfig = isProd => {
           test: /\.css$/,
           use: [styleLoader, cssLoader, postcssLoader]
         },
+        { test: /\.(eot|woff2?|ttf)$/, use: [urlLoader] },
         { test: /\.(jpg|png|jpeg|gif|svg)$/, use: [urlLoader] },
         { test: /\.vue$/, use: [vueLoader] }
       ]

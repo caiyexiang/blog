@@ -12,6 +12,7 @@ const resolve = dir => path.join(__dirname, '..', dir)
 
 const app = new Koa()
 const router = new Router()
+const fileRouter = new Router()
 
 const { createBundleRenderer } = require('vue-server-renderer')
 const templatePath = resolve('src/index.template.html')
@@ -77,6 +78,15 @@ const serve = (path, cache) =>
     maxAge: cache && isProd ? 1000 * 60 * 60 * 24 * 30 : 0
   })
 
+fileRouter.get('/service-worker.js', async ctx => {
+  ctx.type = 'text/javascript'
+  ctx.body = fs.createReadStream(resolve('dist/service-worker.js'))
+})
+fileRouter.get('/manifest.json', async ctx => {
+  ctx.type = 'application/json'
+  ctx.body = fs.createReadStream(resolve('manifest.json'))
+})
+app.use(fileRouter.routes()).use(fileRouter.allowedMethods())
 app.use(favicon(resolve('public/logo-48.png')))
 app.use(mount(serve('dist')))
 app.use(mount('/public', serve('public')))

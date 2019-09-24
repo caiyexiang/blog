@@ -1,14 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+const { api } = require('@/helper').default
 
 Vue.use(Vuex)
-
-const fetchBar = () =>
-  new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve('bar 组件 ajax 返回数据')
-    }, 2000)
-  })
 
 function createStore() {
   const store = new Vuex.Store({
@@ -23,7 +17,7 @@ function createStore() {
     actions: {
       async fetchBar({ commit }) {
         try {
-          const res = await fetchBar()
+          const res = await api.getArticleList()
           commit('SET_BAR', res)
         } catch (err) {
           console.error(err)

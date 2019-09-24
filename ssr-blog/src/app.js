@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import './global.js'
 import App from './App.vue'
 import createStore from './store/store.js'
 import createRouter from './router.js'
