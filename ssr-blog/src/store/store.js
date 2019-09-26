@@ -7,20 +7,64 @@ Vue.use(Vuex)
 function createStore() {
   const store = new Vuex.Store({
     state: {
-      bar: ''
+      articleList: [],
+      categoryList: [],
+      articleDetail: {},
+      totalPage: 0
     },
     mutations: {
-      SET_BAR(state, data) {
-        state.bar = data
+      SET_ARTICLE_LIST(state, data) {
+        state.articleList = data
+      },
+      SET_TOTAL_PAGE(state, page) {
+        state.totalPage = page
+      },
+      SET_CATEGORY_LIST(state, data) {
+        state.categoryList = data
+      },
+      SET_ARTICLE_DETAIL(state, data) {
+        state.articleDetail = data
       }
     },
     actions: {
-      async fetchBar({ commit }) {
+      async fetchArticleList({ commit }, { query }) {
         try {
-          const res = await api.getArticleList()
-          commit('SET_BAR', res)
+          const params = {
+            keyword: query.keyword,
+            page: query.page,
+            category: query.category
+          }
+          const res = await api.getArticleList(params)
+          const data = res.data.data
+          const page = res.data.meta.total
+          data.forEach(item => {
+            item.time = item.meta.updatedAt.split('T')[0]
+          })
+          commit('SET_ARTICLE_LIST', data)
+          commit('SET_TOTAL_PAGE', page)
         } catch (err) {
           console.error(err)
+        }
+      },
+      async fetchCategory({ commit }) {
+        try {
+          const res = await api.getCategoryList()
+          const data = res.data
+          commit('SET_CATEGORY_LIST', data)
+        } catch (err) {
+          console.log(err)
+        }
+      },
+      async fetchArticleDetail({ commit }, { params }) {
+        try {
+          const id = params.id || ''
+          const res = await api.getArticle(id)
+          const data = res.data
+          data.time = data.meta.updatedAt.split('T')[0]
+          data.author = data.author.name
+          commit('SET_ARTICLE_DETAIL', data)
+        } catch (err) {
+          console.log(err)
         }
       }
     }

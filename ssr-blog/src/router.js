@@ -1,18 +1,24 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import App from '@/App.vue'
 
 Vue.use(Router)
 
 function createRouter() {
   const routes = [
     {
-      path: '/bar',
-      component: () => import('./components/Bar.vue')
+      path: '/',
+      name: 'Home',
+      component: () => import('./views/Home.vue')
     },
     {
-      path: '/foo',
-      component: () => import('./components/Foo.vue')
+      path: '/article/:id',
+      name: 'Article',
+      component: () => import('./views/Article.vue')
+    },
+    {
+      path: '/about',
+      name: 'About',
+      component: () => import('./views/About.vue')
     }
   ]
 

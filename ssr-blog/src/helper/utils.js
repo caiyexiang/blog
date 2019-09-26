@@ -1,8 +1,16 @@
 function debounce(fn, delay) {
-  let timeoutID
-  return function(that, ...args) {
-    clearTimeout(timeoutID)
-    timeoutID = window.setTimeout(() => fn.apply(that, args), delay)
+  delay = delay || 600
+  let timer
+  return function() {
+    let ctx = this
+    let args = arguments
+    if (timer) {
+      clearTimeout(timer)
+    }
+    timer = setTimeout(() => {
+      timer = null
+      fn.apply(ctx, args)
+    }, delay)
   }
 }
 

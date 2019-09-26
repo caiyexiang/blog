@@ -25,6 +25,12 @@ const baseConfig = isProd => {
     }
   }
   const styleLoader = { loader: 'vue-style-loader' }
+  const sassLoader = {
+    loader: 'sass-loader',
+    options: {
+      implementation: require('sass')
+    }
+  }
   const postcssLoader = {
     loader: 'postcss-loader',
     options: {
@@ -36,6 +42,12 @@ const baseConfig = isProd => {
     loader: 'vue-loader',
     options: {
       extractCSS: isProd
+    }
+  }
+  const sassResourseLoader = {
+    loader: 'sass-resources-loader',
+    options: {
+      resources: [resolve('src/assets/scss/global.scss')]
     }
   }
 
@@ -52,6 +64,16 @@ const baseConfig = isProd => {
         {
           test: /\.css$/,
           use: [styleLoader, cssLoader, postcssLoader]
+        },
+        {
+          test: /\.s[ac]ss$/i,
+          use: [
+            styleLoader,
+            cssLoader,
+            postcssLoader,
+            sassLoader,
+            sassResourseLoader
+          ]
         },
         { test: /\.(eot|woff2?|ttf)$/, use: [urlLoader] },
         { test: /\.(jpg|png|jpeg|gif|svg)$/, use: [urlLoader] },
