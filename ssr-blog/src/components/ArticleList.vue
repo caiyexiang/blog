@@ -56,11 +56,9 @@ export default {
   },
   watch: {
     currentPage () {
-      const query = { page: this.currentPage.toString() }
-      if (this.keyword) {
-        query.keyword = this.keyword;
-      }
-      this.$router.replace({ query })
+      const query = this.$route.query
+      query.page = this.currentPage
+      this.$router.replace({ query }).catch(_ => { })
       this.$store.dispatch('fetchArticleList', this.$route)
     }
   },

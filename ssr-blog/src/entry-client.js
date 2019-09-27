@@ -61,5 +61,3 @@ router.onReady(() => {
 if ('https:' === location.protocol && navigator.serviceWorker) {
   navigator.serviceWorker.register('/service-worker.js')
 }
-
-navigator.serviceWorker.register('/service-worker.js')

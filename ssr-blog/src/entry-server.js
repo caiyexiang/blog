@@ -21,9 +21,7 @@ export default context =>
 
       Promise.all(
         matchedComponents.map(component => {
-          console.log(`${component.name} - matching`)
           if (component.asyncData) {
-            console.log(`${component.name} - fetching`)
             return component.asyncData({ store, route: router.currentRoute })
           }
         })

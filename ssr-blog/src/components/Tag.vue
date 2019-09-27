@@ -28,7 +28,7 @@ export default {
     changeCategory () {
       const { keyword } = this.$route.query;
       const query = { page: '1', keyword, category: this.id || undefined };
-      this.$router.replace({ query });
+      this.$router.replace({ name: 'Home', query });
     }
   }
 }

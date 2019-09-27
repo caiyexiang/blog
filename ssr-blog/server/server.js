@@ -88,7 +88,7 @@ fileRouter.get('/manifest.json', async ctx => {
 })
 app.use(fileRouter.routes()).use(fileRouter.allowedMethods())
 app.use(favicon(resolve('public/logo-48.png')))
-app.use(mount(serve('dist')))
+app.use(mount('/dist', serve('/dist')))
 app.use(mount('/public', serve('public')))
 
 const render = async (ctx, next) => {

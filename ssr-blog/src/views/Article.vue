@@ -6,8 +6,11 @@
 
 <script>
 import ArticleDetail from '@/components/ArticleDetail.vue'
-const asyncData = ({ store, route }) => store.dispatch('fetchArticleDetail', route)
+const asyncData = ({ store, route }) => {
+  return store.dispatch('fetchArticleDetail', route)
+}
 export default {
+  name: 'Article',
   components: {
     ArticleDetail
   },
@@ -22,6 +25,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-</style>

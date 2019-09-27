@@ -55,6 +55,7 @@ const baseConfig = isProd => {
     devtool: isProd ? false : '#cheap-module-source-map',
     output: {
       path: resolve('dist'),
+      publicPath: '/dist/',
       filename: '[name]-[chunkhash].bundle.js',
       chunkFilename: '[name]-[chunkhash].chunk.js'
     },

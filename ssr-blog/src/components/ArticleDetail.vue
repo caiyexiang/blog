@@ -13,16 +13,8 @@
           </Tag>
         </div>
       </div>
-      <div class="main mavon">
-        <mavon-editor
-          style="height: 100%"
-          :ishljs="true"
-          v-model="articleDetail.content"
-          :defaultOpen="'preview'"
-          :editable="false"
-          :subfield="false"
-          :toolbarsFlag="false">
-        </mavon-editor>
+      <div class="main">
+        <Markdown :content="articleContent"/>
       </div>
     </div>
     <div class="notFound" v-if="!articleDetail.title">
@@ -33,9 +25,12 @@
 
 <script>
 import Tag from '@/components/Tag.vue'
+import Markdown from '@/components/Markdown.vue'
 export default {
+  name: 'ArticleDetail',
   components: {
-    Tag
+    Tag,
+    Markdown
   },
   data () {
     return {
@@ -45,6 +40,9 @@ export default {
   computed: {
     articleDetail () {
       return this.$store.state.articleDetail
+    },
+    articleContent () {
+      return this.$store.state.articleDetail.content
     }
   },
   mounted () {
@@ -63,7 +61,7 @@ export default {
           '商业转载请联系作者获得授权，非商业转载请注明出处。',
           `作者：${author}, 链接：${link}, 来源：某湘的博客。`
         ];
-        return info.join('\n');
+        return info.join('\n')
       }
       if (ele) {
         ele.addEventListener('copy', (event) => {
@@ -108,11 +106,5 @@ export default {
 }
 .main {
   margin-top: 2rem;
-}
-.shadow {
-  box-shadow: none !important;
-}
-.v-show-content {
-  background-color: white !important;
 }
 </style>

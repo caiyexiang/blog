@@ -1,8 +1,7 @@
 import Vue from 'vue'
-import './axios.js'
+import './plugins/axios.js'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
-import mavonEditor from 'mavon-editor'
 import { Button, Pagination, Input, Message } from 'element-ui'
 
 Vue.use(Button)
@@ -23,8 +22,6 @@ Vue.prototype.$success = msg => {
     Vue.prototype.$message({ message: msg, type: 'success' })
   }
 }
-
-Vue.use(mavonEditor)
 
 NProgress.configure({
   easing: 'ease',

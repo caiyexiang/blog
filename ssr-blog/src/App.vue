@@ -3,7 +3,9 @@
     <Nav />
     <main>
       <div class="main-container">
-        <router-view />
+        <transition name="fade" mode="out-in">
+          <router-view />
+        </transition>
       </div>
     </main>
     <Footer />
@@ -33,5 +35,13 @@ main {
   .main-container {
     @include container(2rem);
   }
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.2s ease;
+}
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
 }
 </style>

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-const { api } = require('@/helper').default
+import { api } from '@/helper'
 
 Vue.use(Vuex)
 
@@ -36,7 +36,7 @@ function createStore() {
           }
           const res = await api.getArticleList(params)
           const data = res.data.data
-          const page = res.data.meta.total
+          const page = res.data.meta.total || 0
           data.forEach(item => {
             item.time = item.meta.updatedAt.split('T')[0]
           })
@@ -57,13 +57,14 @@ function createStore() {
       },
       async fetchArticleDetail({ commit }, { params }) {
         try {
-          const id = params.id || ''
+          const id = params.id
           const res = await api.getArticle(id)
           const data = res.data
           data.time = data.meta.updatedAt.split('T')[0]
           data.author = data.author.name
           commit('SET_ARTICLE_DETAIL', data)
         } catch (err) {
+          commit('SET_ARTICLE_DETAIL', {})
           console.log(err)
         }
       }

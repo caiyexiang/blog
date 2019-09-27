@@ -22,7 +22,7 @@ _axios.interceptors.response.use(
     const { response = {} } = err
     switch (response.status) {
       case 404:
-        return Promise.resolve('未找到资源')
+        return Promise.reject('未找到资源')
       case 500:
         return Promise.reject('服务器错误')
     }
