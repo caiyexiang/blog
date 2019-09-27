@@ -5,6 +5,7 @@ const merge = require('webpack-merge')
 const baseConfig = require('./webpack.base.conf.js')
 const SWPrecachePlugin = require('sw-precache-webpack-plugin')
 const VueSSRClientPlugin = require('vue-server-renderer/client-plugin')
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const resolve = dir => path.join(__dirname, '..', dir)
 
 const isProd = process.env.NODE_ENV === 'production'
@@ -21,6 +22,7 @@ const clientConfig = () => {
   ]
   if (isProd) {
     plugins.push(new CleanWebpackPlugin())
+    // plugins.push(new BundleAnalyzerPlugin())
     plugins.push(
       // auto generate service worker
       new SWPrecachePlugin({

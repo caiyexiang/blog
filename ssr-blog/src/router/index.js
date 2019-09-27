@@ -8,17 +8,17 @@ function createRouter() {
     {
       path: '/',
       name: 'Home',
-      component: () => import('./views/Home.vue')
+      component: () => import('@/views/Home.vue')
     },
     {
       path: '/article/:id',
       name: 'Article',
-      component: () => import('./views/Article.vue')
+      component: () => import('@/views/Article.vue')
     },
     {
       path: '/about',
       name: 'About',
-      component: () => import('./views/About.vue')
+      component: () => import('@/views/About.vue')
     }
   ]
 
