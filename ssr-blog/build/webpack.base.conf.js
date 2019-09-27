@@ -64,7 +64,12 @@ const baseConfig = isProd => {
         { test: /\.js$/, use: [scriptLoader] },
         {
           test: /\.css$/,
-          use: [styleLoader, cssLoader, postcssLoader]
+          use: isProd
+            ? ExtractTextPlugin.extract({
+                use: 'css-loader',
+                fallback: 'vue-style-loader'
+              })
+            : [styleLoader, cssLoader, postcssLoader]
         },
         {
           test: /\.s[ac]ss$/i,
