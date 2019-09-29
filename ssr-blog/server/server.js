@@ -21,16 +21,19 @@ const serverInfo =
   `koa/${require('koa/package.json').version} ` +
   `vue-server-renderer/${require('vue-server-renderer/package.json').version}`
 
-// dev模式下进行proxy代理
+// env数据读取
+// dev模式下进行proxy代理 - 这个代理针对的是浏览器渲染时的ajax
 if (!isProd) {
   process.env = Object.assign(process.env, readEnv('../.env.dev'))
   app.use(
     proxy('/api', {
       target: process.env.API_URL,
-      pathRewrite: { '^/api': 'v1' },
+      pathRewrite: { '^/api': '' },
       changeOrigin: true
     })
   )
+} else {
+  process.env = Object.assign(process.env, readEnv('../.env.prod'))
 }
 
 const microCache = new LRU({

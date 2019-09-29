@@ -14,6 +14,7 @@ export default {
 
 <style lang="scss" scoped>
 footer {
+  font-size: 0.8rem;
   background-color: $dark-color;
   color: $font-light-color;
   width: 100%;

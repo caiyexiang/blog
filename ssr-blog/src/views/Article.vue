@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="article-container">
     <ArticleDetail />
   </div>
 </template>
@@ -25,3 +25,13 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.article-container {
+  font-size: 1rem;
+  @include phone-width() {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+</style>

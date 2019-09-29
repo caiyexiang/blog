@@ -44,6 +44,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.about {
+  @include pc-width() {
+    padding: 0;
+  }
+  padding: 0 8px 0 8px;
+}
 .accounts {
   display: flex;
   direction: row;

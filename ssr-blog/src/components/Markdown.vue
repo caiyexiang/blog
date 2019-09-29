@@ -26,6 +26,8 @@ export default {
   margin: 0 auto;
   margin-top: 2em;
   margin-bottom: 2em;
+  max-width: 100%;
+  height: auto;
 }
 .markdown >>> code:not(.hljs) {
   color: #e96900;

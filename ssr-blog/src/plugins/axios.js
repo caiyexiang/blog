@@ -6,7 +6,7 @@ import axios from 'axios'
 const isServer = process.env.VUE_ENV === 'server'
 
 const config = {
-  baseURL: isServer ? 'http://localhost:5000/v1' : '/api',
+  baseURL: isServer ? process.env.API_URL : '/api',
   timeout: 6000
 }
 

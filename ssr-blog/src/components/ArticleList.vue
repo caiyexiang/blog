@@ -10,7 +10,7 @@
           </Tag>
         </div>
         <div class="mid">
-          <h2>{{article.title}}</h2>
+          <h2 :title="article.title">{{article.title}}</h2>
         </div>
         <div class="bottom">
           <div><i class="el-icon-view" /> {{ article.pv }}</div>
@@ -79,6 +79,10 @@ export default {
   margin-bottom: 10px;
   cursor: pointer;
   .card-info-container {
+    width: calc(100% - 160px);
+    @include phone-width() {
+      width: 100%;
+    }
     %info-part {
       display: flex;
       direction: row;
@@ -91,7 +95,13 @@ export default {
       margin-bottom: 1rem;
       h2 {
         font-size: 1.3rem;
+        @include phone-width() {
+          font-size: 1.1rem;
+        }
         margin: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
     .top {
@@ -117,6 +127,9 @@ export default {
     height: 90px;
     background: url(~@/assets/logo.png);
     background-size: cover;
+    @include phone-width() {
+      display: none;
+    }
   }
 }
 .pagination {

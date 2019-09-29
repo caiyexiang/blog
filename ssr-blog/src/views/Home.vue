@@ -40,5 +40,16 @@ export default {
   #category {
     width: 29%;
   }
+  @include not-pc-width() {
+    flex-direction: column-reverse;
+    align-items: center;
+    #article {
+      width: 100%;
+    }
+    #category {
+      width: 100%;
+      margin-bottom: 8px;
+    }
+  }
 }
 </style>

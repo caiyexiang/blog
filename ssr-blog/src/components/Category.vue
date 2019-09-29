@@ -34,6 +34,13 @@ export default {
 <style lang="scss" scoped>
 .card {
   @extend %card;
+  @include phone-width() {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    border: 0;
+  }
   .title {
     line-height: 2rem;
     border-bottom: 1px solid $border-color;

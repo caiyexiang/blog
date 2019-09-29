@@ -10,7 +10,8 @@ function createStore() {
       articleList: [],
       categoryList: [],
       articleDetail: {},
-      totalPage: 0
+      totalPage: 0,
+      showSide: false
     },
     mutations: {
       SET_ARTICLE_LIST(state, data) {
@@ -24,6 +25,12 @@ function createStore() {
       },
       SET_ARTICLE_DETAIL(state, data) {
         state.articleDetail = data
+      },
+      SHOW_SIDE(state) {
+        state.showSide = true
+      },
+      HIDE_SIDE(state) {
+        state.showSide = false
       }
     },
     actions: {

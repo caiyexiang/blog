@@ -56,5 +56,9 @@ export default {
   word-break: keep-all;
   margin-right: 1rem;
   margin-bottom: 1rem;
+  @include phone-width() {
+    font-size: 0.8rem;
+    padding: 0.2rem;
+  }
 }
 </style>
